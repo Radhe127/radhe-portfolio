@@ -1,0 +1,50 @@
+.app-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Background Canvas */
+.background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Gradient Overlay */
+.gradient-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(36, 226, 255, 0.14) 0%, transparent 52%),
+    radial-gradient(circle at 88% 22%, rgba(124, 243, 255, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 65% 80%, rgba(36, 226, 255, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(6, 26, 77, 0.0) 0%, rgba(6, 26, 77, 0.55) 55%, rgba(6, 26, 77, 0.88) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Noise Texture Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 1;
+}
