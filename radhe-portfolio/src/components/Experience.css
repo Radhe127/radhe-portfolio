@@ -1,0 +1,135 @@
+.experience-section {
+  padding: 0 0 1rem;
+}
+
+.experience-shell {
+  padding: 2rem;
+}
+
+.experience-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.timeline {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marker-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--gradient-red);
+  box-shadow: 0 0 0 4px rgba(125, 211, 252, 0.14);
+}
+
+.marker-line {
+  width: 2px;
+  flex: 1;
+  min-height: 70px;
+  margin-top: 0.55rem;
+  background: linear-gradient(to bottom, rgba(125, 211, 252, 0.55), rgba(255, 255, 255, 0.08));
+}
+
+.timeline-content {
+  padding: 1.35rem;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+
+.exp-position {
+  font-size: 1.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.exp-company {
+  color: #c8efff;
+  font-weight: 600;
+}
+
+.exp-meta {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.exp-period,
+.exp-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.exp-description {
+  color: var(--text-secondary);
+  margin-bottom: 0.95rem;
+}
+
+.exp-achievements {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.exp-achievements li {
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.exp-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #7dd3fc;
+}
+
+.exp-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.exp-tech {
+  padding: 0.45rem 0.78rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 768px) {
+  .experience-shell {
+    padding: 1.2rem;
+  }
+
+  .timeline-item {
+    grid-template-columns: 18px 1fr;
+  }
+}
