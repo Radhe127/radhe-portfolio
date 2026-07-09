@@ -17,14 +17,10 @@ function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    // Init Lenis early, but keep it stopped until the loader finishes.
     initLenis();
     stopLenis();
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -35,27 +31,28 @@ function App() {
   return (
     <LoadingProvider>
       <div className="app-container">
-        {/* Custom Cursor - Desktop Only */}
         {!isMobile && <Cursor />}
 
-        {/* Background */}
         <div className="gradient-overlay"></div>
         <div className="noise-overlay"></div>
+        <div className="orb orb-one"></div>
+        <div className="orb orb-two"></div>
+        <div className="orb orb-three"></div>
 
-        {/* 3D Background Scene */}
         <Suspense fallback={null}>
           <BackgroundScene />
         </Suspense>
 
-        {/* Main Content */}
         <div className="main-content">
           <Navbar />
           <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Contact />
+          <div className="page-stack">
+            <About />
+            <Skills />
+            <Projects />
+            <Experience />
+            <Contact />
+          </div>
           <Footer />
         </div>
       </div>

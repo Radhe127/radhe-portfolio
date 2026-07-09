@@ -9,89 +9,65 @@ const Skills = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('animate');
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
-    if (skillsRef.current) {
-      observer.observe(skillsRef.current);
-    }
-
+    if (skillsRef.current) observer.observe(skillsRef.current);
     return () => observer.disconnect();
   }, []);
 
   const skillCategories = [
-    {
-      title: 'Languages',
-      skills: config.skills.languages,
-      color: '#e63946'
-    },
-    {
-      title: 'Frameworks',
-      skills: config.skills.frameworks,
-      color: '#ff6b6b'
-    },
-    {
-      title: 'Databases',
-      skills: config.skills.databases,
-      color: '#e63946'
-    },
-    {
-      title: 'Tools',
-      skills: config.skills.tools,
-      color: '#ff6b6b'
-    },
-    {
-      title: 'ML & Data Science',
-      skills: config.skills.mlTools,
-      color: '#e63946'
-    }
+    { title: 'Languages', skills: config.skills.languages },
+    { title: 'Frameworks', skills: config.skills.frameworks },
+    { title: 'Databases', skills: config.skills.databases },
+    { title: 'Tools', skills: config.skills.tools },
+    { title: 'ML & Data', skills: config.skills.mlTools }
   ];
 
   return (
     <section id="skills" className="skills-section" ref={skillsRef}>
       <div className="section-container">
-        <div className="section-header">
-          <span className="section-tag">Expertise</span>
-          <h2 className="section-title">Skills & Technologies</h2>
-        </div>
+        <div className="section-shell skills-shell">
+          <div className="skills-inner">
+            <div className="section-header reveal-target">
+              <span className="section-tag">Expertise</span>
+              <h2 className="section-title">Skills & Technologies</h2>
+              <p className="section-description">
+                My stack is centered around backend reliability, modern React interfaces, and a growing interest in AI-enhanced product experiences.
+              </p>
+            </div>
 
-        <div className="skills-grid">
-          {skillCategories.map((category, index) => (
-            <div 
-              key={category.title} 
-              className="skill-category"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <h3 className="category-title">{category.title}</h3>
-              <div className="skill-tags">
-                {category.skills.map((skill) => (
-                  <span 
-                    key={skill} 
-                    className="skill-tag"
-                    style={{ '--accent-color': category.color }}
-                  >
-                    {skill}
+            <div className="skills-grid reveal-target">
+              {skillCategories.map((category) => (
+                <div key={category.title} className="glass-card skill-category">
+                  <h3 className="category-title">{category.title}</h3>
+                  <div className="skill-tags">
+                    {category.skills.map((skill) => (
+                      <span key={skill} className="skill-tag">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="glass-card learning-panel reveal-target">
+              <div>
+                <span className="section-tag learning-tag">Currently Building On</span>
+                <h3 className="learning-title">Continuous learning is part of the workflow.</h3>
+              </div>
+              <div className="learning-list">
+                {config.skills.currentlyLearning.map((item) => (
+                  <span key={item} className="pill-tag">
+                    {item}
                   </span>
                 ))}
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Animated Tech Marquee */}
-        <div className="tech-marquee">
-          <div className="marquee-content">
-            {[...config.skills.languages, ...config.skills.frameworks, ...config.skills.tools].map((skill, index) => (
-              <span key={index} className="marquee-item">{skill}</span>
-            ))}
-            {[...config.skills.languages, ...config.skills.frameworks, ...config.skills.tools].map((skill, index) => (
-              <span key={`dup-${index}`} className="marquee-item">{skill}</span>
-            ))}
           </div>
         </div>
       </div>
